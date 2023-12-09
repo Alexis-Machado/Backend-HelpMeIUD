@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "e9edf1c9-552e-4b36-bd16-57caaf2d6cb9",
+		"name": "HelpMeIUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25950728"
+	},
+	"item": [
+		{
+			"name": "Access Token",
+			"item": [
+				{
+					"name": "Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let results = JSON.parse(responseBody) \r",
+									"pm.environment.set('access_token', results.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "1913600",
+								"username": "HelpmeIUD"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "jhoan12@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1013600",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": "localhost:8082/api/v1/oauth/token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"jhoan@gmail.com\",\r\n    \"nombre\": \"jhoan\",\r\n    \"apellido\": \"mendoza\",\r\n    \"password\": \"1013600\",\r\n    \"fechaNacimiento\": \"2000-11-19\",\r\n    \"redSocial\": false,\r\n    \"enabled\": true,\r\n    \"roles\":[{\r\n        \"id\": 1\r\n    }],\r\n    \"image\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/api/v1/usuarios/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6ImZhbHNlIiwiaWRfdXN1YXJpbyI6IjMiLCJ1c2VyX25hbWUiOiJqaG9hbkBnbWFpbC5jb20iLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZmVjaGFfbmFjaW1pZW50byI6IjIwMDAtMTEtMTkiLCJleHAiOjE3MDE3NDYzNTQsIm5vbWJyZSI6Impob2FuIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJhN2VjNmI2Ny1hMTA0LTQyMmMtYmY2NS1mNjZmNWE0ODBkYTIiLCJjbGllbnRfaWQiOiJIZWxwbWVJVUQifQ.AbP2HZroeD-g_9RrzSGbMmzI5lSlqIG8E0PtjDJmKS-xc6-RNUdMjf1cRPdI7lGVNFE_ABCPXqkbl2h66qOFRpehw5zYWaIACcWu7ICHid7DgOyprvNqeKikS4Fz2xDKGDAimC_Rue6JzPrylQXD0eui6Buv0zjuvqqAO0bKcSrmijT0QaavKnyJp-c1WXnqSRwJTnrpjX-fyUOFf2NirOC4CXG0dMnif3WrFyMRn5goOAVGCaqGZQOVErR3xyaA0-2pQgFbuCdfQtuzPZywA316pMS7RnyNIj1SLU76kU_qtwkfKHRBhuWf9OdPfcTw7vq9JDCv4Yf5gACY7zgicg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8082/api/v1/usuarios/usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6ImZhbHNlIiwiaWRfdXN1YXJpbyI6IjMiLCJ1c2VyX25hbWUiOiJqaG9hbkBnbWFpbC5jb20iLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZmVjaGFfbmFjaW1pZW50byI6IjIwMDAtMTEtMTkiLCJleHAiOjE3MDE3NDYzNTQsIm5vbWJyZSI6Impob2FuIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJhN2VjNmI2Ny1hMTA0LTQyMmMtYmY2NS1mNjZmNWE0ODBkYTIiLCJjbGllbnRfaWQiOiJIZWxwbWVJVUQifQ.AbP2HZroeD-g_9RrzSGbMmzI5lSlqIG8E0PtjDJmKS-xc6-RNUdMjf1cRPdI7lGVNFE_ABCPXqkbl2h66qOFRpehw5zYWaIACcWu7ICHid7DgOyprvNqeKikS4Fz2xDKGDAimC_Rue6JzPrylQXD0eui6Buv0zjuvqqAO0bKcSrmijT0QaavKnyJp-c1WXnqSRwJTnrpjX-fyUOFf2NirOC4CXG0dMnif3WrFyMRn5goOAVGCaqGZQOVErR3xyaA0-2pQgFbuCdfQtuzPZywA316pMS7RnyNIj1SLU76kU_qtwkfKHRBhuWf9OdPfcTw7vq9JDCv4Yf5gACY7zgicg"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"jhoan@gmail.com\",\r\n    \"nombre\": \"jhoan\",\r\n    \"apellido\": \"mendoza\",\r\n    \"password\": \"1013600\",\r\n    \"fechaNacimiento\": \"2000-11-19\",\r\n    \"redSocial\": false,\r\n    \"enabled\": true,\r\n    \"roles\":[{\r\n        \"id\": 1\r\n    }],\r\n    \"image\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/api/v1/usuarios/usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6ImZhbHNlIiwiaWRfdXN1YXJpbyI6IjMiLCJ1c2VyX25hbWUiOiJqaG9hbkBnbWFpbC5jb20iLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiZmVjaGFfbmFjaW1pZW50byI6IjIwMDAtMTEtMTkiLCJleHAiOjE3MDE3NDYzNTQsIm5vbWJyZSI6Impob2FuIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiJhN2VjNmI2Ny1hMTA0LTQyMmMtYmY2NS1mNjZmNWE0ODBkYTIiLCJjbGllbnRfaWQiOiJIZWxwbWVJVUQifQ.AbP2HZroeD-g_9RrzSGbMmzI5lSlqIG8E0PtjDJmKS-xc6-RNUdMjf1cRPdI7lGVNFE_ABCPXqkbl2h66qOFRpehw5zYWaIACcWu7ICHid7DgOyprvNqeKikS4Fz2xDKGDAimC_Rue6JzPrylQXD0eui6Buv0zjuvqqAO0bKcSrmijT0QaavKnyJp-c1WXnqSRwJTnrpjX-fyUOFf2NirOC4CXG0dMnif3WrFyMRn5goOAVGCaqGZQOVErR3xyaA0-2pQgFbuCdfQtuzPZywA316pMS7RnyNIj1SLU76kU_qtwkfKHRBhuWf9OdPfcTw7vq9JDCv4Yf5gACY7zgicg"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8082/api/v1/usuarios/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delitos",
+			"item": [
+				{
+					"name": "Crear Delito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6ImZhbHNlIiwiaWRfdXN1YXJpbyI6IjEiLCJ1c2VyX25hbWUiOiJqaG9hbjEyQGdtYWlsLmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJmZWNoYV9uYWNpbWllbnRvIjoiMjAwMC0xMS0xOSIsImV4cCI6MTcwMTc0NjU5OCwibm9tYnJlIjoiamhvYW4iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjFjZmNiYjNmLWU1MGQtNDAwYi04NDkzLTczNTI5YTI2YmJlMSIsImNsaWVudF9pZCI6IkhlbHBtZUlVRCJ9.knH837Oc698cHgFiHmOOSHx9B1My3_QLWX3reP7nIRds5B03mC-FDccT71STuVtr8WB4UZc7erF2Tieve5LHM9Jp2FxUya8gD9fD3IlgrhmI2X-0eApudMc0L3C8KMJpRhNw1PseGr6mJc6QXPusG7hg82oCErsh-5Ek4Sjlav1jM22QyrsWKBXYY0bF5Svyfg1l4BEB44qWk2IqtwiAFxpRy6U6qlrcqvrfmPa0LEYHse3lf_zXxTV4NMcFw4zDmBfRcpRFClHmN6o5WmItOIwXtvyKlJ04CjqnjAuSdFzt1Hrrfkzb4mwwJ_29fvmEM4ZS6jCm_Bxdh_pcDWEmSA"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Hurto\",\r\n    \"descripcion\": \"Cuando roban las pertenencias\",\r\n    \"usuario_id\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8082/api/v1/delitos"
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar Delitos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8082/api/v1/delitos"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Delito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6ImZhbHNlIiwiaWRfdXN1YXJpbyI6IjEiLCJ1c2VyX25hbWUiOiJqaG9hbjEyQGdtYWlsLmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJmZWNoYV9uYWNpbWllbnRvIjoiMjAwMC0xMS0xOSIsImV4cCI6MTcwMTc0NjU5OCwibm9tYnJlIjoiamhvYW4iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjFjZmNiYjNmLWU1MGQtNDAwYi04NDkzLTczNTI5YTI2YmJlMSIsImNsaWVudF9pZCI6IkhlbHBtZUlVRCJ9.knH837Oc698cHgFiHmOOSHx9B1My3_QLWX3reP7nIRds5B03mC-FDccT71STuVtr8WB4UZc7erF2Tieve5LHM9Jp2FxUya8gD9fD3IlgrhmI2X-0eApudMc0L3C8KMJpRhNw1PseGr6mJc6QXPusG7hg82oCErsh-5Ek4Sjlav1jM22QyrsWKBXYY0bF5Svyfg1l4BEB44qWk2IqtwiAFxpRy6U6qlrcqvrfmPa0LEYHse3lf_zXxTV4NMcFw4zDmBfRcpRFClHmN6o5WmItOIwXtvyKlJ04CjqnjAuSdFzt1Hrrfkzb4mwwJ_29fvmEM4ZS6jCm_Bxdh_pcDWEmSA"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"acoso sexual 2\",\r\n    \"descripcion\": \"groserías a una persona\",\r\n    \"usuario_id\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8082/api/v1/delitos/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Delito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6ImZhbHNlIiwiaWRfdXN1YXJpbyI6IjEiLCJ1c2VyX25hbWUiOiJqaG9hbjEyQGdtYWlsLmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJmZWNoYV9uYWNpbWllbnRvIjoiMjAwMC0xMS0xOSIsImV4cCI6MTcwMTc0NjU5OCwibm9tYnJlIjoiamhvYW4iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjFjZmNiYjNmLWU1MGQtNDAwYi04NDkzLTczNTI5YTI2YmJlMSIsImNsaWVudF9pZCI6IkhlbHBtZUlVRCJ9.knH837Oc698cHgFiHmOOSHx9B1My3_QLWX3reP7nIRds5B03mC-FDccT71STuVtr8WB4UZc7erF2Tieve5LHM9Jp2FxUya8gD9fD3IlgrhmI2X-0eApudMc0L3C8KMJpRhNw1PseGr6mJc6QXPusG7hg82oCErsh-5Ek4Sjlav1jM22QyrsWKBXYY0bF5Svyfg1l4BEB44qWk2IqtwiAFxpRy6U6qlrcqvrfmPa0LEYHse3lf_zXxTV4NMcFw4zDmBfRcpRFClHmN6o5WmItOIwXtvyKlJ04CjqnjAuSdFzt1Hrrfkzb4mwwJ_29fvmEM4ZS6jCm_Bxdh_pcDWEmSA"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8082/api/v1/delitos/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Casos",
+			"item": [
+				{
+					"name": "Crear Caso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6ImZhbHNlIiwiaWRfdXN1YXJpbyI6IjEiLCJ1c2VyX25hbWUiOiJqaG9hbjEyQGdtYWlsLmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJmZWNoYV9uYWNpbWllbnRvIjoiMjAwMC0xMS0xOSIsImV4cCI6MTcwMTc0NjU5OCwibm9tYnJlIjoiamhvYW4iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjFjZmNiYjNmLWU1MGQtNDAwYi04NDkzLTczNTI5YTI2YmJlMSIsImNsaWVudF9pZCI6IkhlbHBtZUlVRCJ9.knH837Oc698cHgFiHmOOSHx9B1My3_QLWX3reP7nIRds5B03mC-FDccT71STuVtr8WB4UZc7erF2Tieve5LHM9Jp2FxUya8gD9fD3IlgrhmI2X-0eApudMc0L3C8KMJpRhNw1PseGr6mJc6QXPusG7hg82oCErsh-5Ek4Sjlav1jM22QyrsWKBXYY0bF5Svyfg1l4BEB44qWk2IqtwiAFxpRy6U6qlrcqvrfmPa0LEYHse3lf_zXxTV4NMcFw4zDmBfRcpRFClHmN6o5WmItOIwXtvyKlJ04CjqnjAuSdFzt1Hrrfkzb4mwwJ_29fvmEM4ZS6jCm_Bxdh_pcDWEmSA"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitud\": 6.1684344,\r\n    \"longitud\": -75.5943721,\r\n    \"altitud\": 19.25,\r\n    \"visible\": true,\r\n    \"descripcion\": \"Me robaron mi Celular\",\r\n    \"urlMap\": \"https://maps.google.com/maps?ll=6.166938,-75.605606&z=11&t=m&hl=es-ES&gl=US&mapclient=apiv3\",\r\n    \"rmiUrl\": \"https://www.google.com/maps/@6.1669376,-75.6056064,11z/data=!10m1!1e1!12b1?source=apiv3&rapsrc=apiv3\",\r\n    \"usuarioId\": 2,\r\n    \"delitoId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8082/api/v1/casos"
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar Casos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8082/api/v1/casos"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Caso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6ImZhbHNlIiwiaWRfdXN1YXJpbyI6IjEiLCJ1c2VyX25hbWUiOiJqaG9hbjEyQGdtYWlsLmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJmZWNoYV9uYWNpbWllbnRvIjoiMjAwMC0xMS0xOSIsImV4cCI6MTcwMTc0NjU5OCwibm9tYnJlIjoiamhvYW4iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjFjZmNiYjNmLWU1MGQtNDAwYi04NDkzLTczNTI5YTI2YmJlMSIsImNsaWVudF9pZCI6IkhlbHBtZUlVRCJ9.knH837Oc698cHgFiHmOOSHx9B1My3_QLWX3reP7nIRds5B03mC-FDccT71STuVtr8WB4UZc7erF2Tieve5LHM9Jp2FxUya8gD9fD3IlgrhmI2X-0eApudMc0L3C8KMJpRhNw1PseGr6mJc6QXPusG7hg82oCErsh-5Ek4Sjlav1jM22QyrsWKBXYY0bF5Svyfg1l4BEB44qWk2IqtwiAFxpRy6U6qlrcqvrfmPa0LEYHse3lf_zXxTV4NMcFw4zDmBfRcpRFClHmN6o5WmItOIwXtvyKlJ04CjqnjAuSdFzt1Hrrfkzb4mwwJ_29fvmEM4ZS6jCm_Bxdh_pcDWEmSA"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitud\": 6.1684344,\r\n    \"longitud\": -75.5943721,\r\n    \"altitud\": 19.25,\r\n    \"visible\": true,\r\n    \"descripcion\": \"Me robaron mi bicicleta\",\r\n    \"urlMap\": \"https://maps.google.com/maps?ll=6.166938,-75.605606&z=11&t=m&hl=es-ES&gl=US&mapclient=apiv3\",\r\n    \"rmiUrl\": \"https://www.google.com/maps/@6.1669376,-75.6056064,11z/data=!10m1!1e1!12b1?source=apiv3&rapsrc=apiv3\",\r\n    \"usuarioId\": 2,\r\n    \"delitoId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8082/api/v1/casos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Caso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6ImZhbHNlIiwiaWRfdXN1YXJpbyI6IjEiLCJ1c2VyX25hbWUiOiJqaG9hbjEyQGdtYWlsLmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJmZWNoYV9uYWNpbWllbnRvIjoiMjAwMC0xMS0xOSIsImV4cCI6MTcwMTc0Njc1NSwibm9tYnJlIjoiamhvYW4iLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjE4MTNlNTM1LWM2NGQtNDBhMC1hODQ3LTUyMTJmZTRkOWI0MiIsImNsaWVudF9pZCI6IkhlbHBtZUlVRCJ9.YNhzwbsvcu60HMtEcwyFaijg48glT0mQM6MI4IRwdSc44cMVxGqD6kGQyFf_gTQ8CWlK5Abt4t30lDWTTJl_QG4kgLVUmOVCJRdKuyCT7yBXkIR3uBX-fs42FnZkWz1MaTD12qng7a6nhuy_6-P8PwepVtVEVJkxvNkvlixGrC3A2m-bKlJefuJX03sh_UdQwILzF_V1QS_suzM9w4tR4fZOxE79-_pEMqNB5s90OeLlvwfOppdczR5Cpn_VbX2ow6C0gPIYeOxeShw-VxQ5KQ4aRvbmB6wLqsM5rhlvrVCnVPRmtMHIGGSc0-ViZR2jgNazUED4DfRUq340Er5MCg"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8082/api/v1/casos/1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
